@@ -1,0 +1,18 @@
+.launch-firwork{
+    width: 100vw;
+    height: 100vh;
+    
+    position: absolute;
+    z-index: 100;
+
+    background-color: transparent;
+
+    color:red;
+    text-align: center;
+    cursor: pointer;
+    /* animation */
+}
+
+.launch-firwork.close{
+    display: none;
+}

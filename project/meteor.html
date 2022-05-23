@@ -1,0 +1,132 @@
+<!Doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Galaxy meteor shower </title>
+        <link 
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+            rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+            crossorigin="anonymous"
+        />
+
+        <link rel="stylesheet" href="css/meteor.css">
+        <style>
+
+            .container-fluid{
+              
+              margin-top: auto;
+              margin-bottom: auto;
+              height:100vh;
+            }
+            .text{
+              z-index:0;
+              text-align: center;
+                
+              color:white;
+              
+              cursor: pointer;
+            }
+            .text .close{
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+
+        <!-- partial:index.partial.html -->
+        <div class= "wrapper">
+            <canvas id = "c" width="500px" height="500px"></canvas>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row justify-content-center align-items-center h-100">
+                <div class="col-12 rounded text fs-2">
+                    Chris跟Lydia一起上了外太空
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <!-- partial -->
+        <script src='https://code.createjs.com/createjs-2015.11.26.min.js'></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+        <script  src="js/meteor.js"></script>
+        <script
+            src="https://kit.fontawesome.com/5476a5a801.js"
+            crossorigin="anonymous">
+        </script>
+        <script 
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+            crossorigin="anonymous">
+        </script>
+        <script
+            src="js/jquery.min.js">
+        </script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+            integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+            crossorigin="anonymous">
+        </script>
+
+        <script>
+            text_list = [
+                "（太空船裡）",
+                "「寶貝，你看看外面」",
+                "「窗外都是流星雨唷」",
+                "「這裡的流星雨」",
+                "「時間無限」",
+                "「如同我愛你一樣」",
+                "「直到永遠」",
+                "許3個願望吧!",
+                "第一個願望:（說出來吧）",
+                "第二個願望:（說出來吧）",
+                "第三個願望:（默默許在心底）"
+            ]
+            let i = 0
+            let index = 0
+            let txt = ''
+            let text_block = document.querySelector(".text")
+            function typeWriter() {  
+                if (i < txt.length) {
+                    text_block.innerHTML += txt.charAt(i);
+                    console.log(txt.charAt(i))
+                    i++;
+                    setTimeout(typeWriter, 100);
+                }
+            }
+
+            
+            let col = document.querySelector(".col-6")
+            let row = document.querySelector(".row")
+            let space_sound = new Audio("sound\\spacesound.mp3")
+            text_block.addEventListener("click", function(){
+                space_sound.volume = 0.1
+                space_sound.play()
+                console.log(`typing, 第${index + 1}句`)
+                if (index < text_list.length){
+                    i = 0
+                    text_block.innerHTML = ""
+                    txt = text_list[index]
+                    typeWriter()
+                    //setInterval(typeWriter(text_list[index]), 5000)
+                    index++;
+                }else{
+                    button = document.querySelector(".btn")
+                    /*text_block.innerHTML = `
+                    <form>
+                      <div class="mb-3">
+                          <label for="exampleFormControlTextarea1" class="form-label">寫下你的願望</label>
+                          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                      </div>
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                    `*/
+                    location.href = "home_page.html"
+                }
+            })
+        </script>
+    </body>
+</html>

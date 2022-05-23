@@ -1,0 +1,16 @@
+.loading{
+    width: 100vw;
+    height: 100vh;
+    
+    position: absolute;
+    z-index: 100;
+
+    background-color: #f1f2f3;
+    
+    text-align: center;
+    line-height: 100vh;
+}
+
+.loading.close{
+    display: none;
+}

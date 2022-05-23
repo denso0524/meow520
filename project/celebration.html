@@ -1,0 +1,152 @@
+<!Doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link 
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+            rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+            crossorigin="anonymous"
+        />
+        <link
+            href="css/loading.css"
+            rel="stylesheet"
+        />
+        <link
+            href="css/luanch_firework.css"
+            rel="stylesheet"
+        />
+        <title>Chris & Lydia</title>
+        <style>
+            .container-fluid{
+                height:60vh;
+            }
+            .text{
+                text-align: center;
+                
+                color:white;
+                
+                cursor: pointer;
+            }
+            .text .close{
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- loading -->
+        <div class="loading">
+            <img src="pic/loading.gif" alt="load">
+        </div>
+
+        <!-- fireworks -->
+        <canvas id="firework"></canvas>
+
+        <div class="container-fluid">
+            <div class="row justify-content-center align-items-end h-100">
+                <div class="col-6 rounded text fs-3">
+                    Click to start
+                </div>
+            </div>
+        </div>
+        
+        
+        
+
+        <script
+            src="https://kit.fontawesome.com/5476a5a801.js"
+            crossorigin="anonymous">
+        </script>
+        <script 
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+            crossorigin="anonymous">
+        </script>
+        <script
+            src="js/jquery.min.js">
+        </script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+            integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+            crossorigin="anonymous">
+        </script>
+    
+
+        <!-- for fireworks -->
+        <script 
+            type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.min.js">
+        </script>
+        
+        <!-- loading -->
+        <script 
+            type="text/javascript"
+            src="js/load.js">
+        </script>
+
+        <script 
+            type="text/javascript"
+            src="js/click_to_enter.js">
+        </script>
+
+        <script
+            type="text/javascript"
+            src="js/fireworks.js">
+        </script>
+
+
+        <script>
+            text_list = [
+                "你的寶", 
+                "Chris",
+                "為你的18歲獻上最誠摯的祝福",
+                "看!",
+                "是煙火",
+                "聽!",
+                "煙火的聲音總共有幾種呢？",
+                "看!",
+                "煙火很美吧!",
+                "寶貝，你也很美",
+                "很可愛",
+                "我很愛你唷，一直都是唷",
+                "寶貝，這陣子辛苦了",
+                "不要太快走開，盡情欣賞煙火吧",
+                "點我進入下一個環節"
+            ]
+
+            let i = 0
+            let index = 0
+            let txt = ''
+            let text_block = document.querySelector(".text")
+            function typeWriter() {  
+                if (i < txt.length) {
+                    text_block.innerHTML += txt.charAt(i);
+                    console.log(txt.charAt(i))
+                    i++;
+                    setTimeout(typeWriter, 100);
+                }
+            }
+
+            
+            let col = document.querySelector(".col-6")
+            let row = document.querySelector(".row")
+            text_block.addEventListener("click", function(){
+                console.log(`typing, 第${index + 1}句`)
+                if (index < text_list.length){
+                    i = 0
+                    text_block.innerHTML = ""
+                    txt = text_list[index]
+                    typeWriter()
+                    //setInterval(typeWriter(text_list[index]), 5000)
+                    index++;
+                }else{
+                    //col.removeChild(text_block)
+                    // or other
+                    // next step 
+                    text_block.style.display = "none"
+                    location.href = "meteor.html"
+                }
+            })
+        </script>
+    </body>
+</html>

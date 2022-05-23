@@ -1,0 +1,30 @@
+.body{
+    overflow: hidden;
+    height: 100%;
+    position: relative;
+    background: linear-gradient(
+        105deg,
+        #845ec2,
+        #d65db1,
+        #ff6f91,
+        #ff9671,
+        #ffc75f,
+        #f9f871,
+        transparent 100%
+    );
+    background-size: 200% 200%;
+    -webkit-animation: bannerbg ease 8s infinite;
+          animation: bannerbg ease 8s infinite;
+}
+
+@keyframes bannerbg {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+}

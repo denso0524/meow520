@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+            crossorigin="anonymous"
+        />
+        <link
+            href="css/clock.css"
+            rel="stylesheet"
+        />
+        <link
+            href="css/entrance.css" 
+            rel="stylesheet"
+        />
+        
+        <title>I love you</title>
+        <style>
+            @media screen and (max-device-width: 480px) and (orientation: portrait) {
+                .background {
+                    background: linear-gradient(rgba(255, 255, 255, 0.6),
+                            rgba(255, 255, 255, 0.2)),
+                        url("pic/love2.jpg") no-repeat center;
+                    background-size: auto 100%;
+                }
+            
+                .ml-5 {
+                    margin: 0 !important;
+                }
+            
+                .blur {
+                    backdrop-filter: blur(8px) !important;
+                    -webkit-backdrop-filter: blur(8px) !important;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container-fluid banner">
+            <!-- wrap == banner -->
+            <div class="row background">
+                <div class="col-12 blur">
+                    <div class="">
+                        <div class="container-fluid inner">
+                            <div class="row ml-5">
+                                <div class="col-md-4 text">
+                                    <div class="title fs-1">
+                                        <p class="fs-1" style="display: inline">Happy birthday</p>
+                                    </div>
+                                    <div class="subtitle">
+                                        <p class="fs-3" style="display: inline-block">Chris</p>
+                                        <div
+                                        class="fa-solid fa-heart fa-lg c1"
+                                        aria-hidden="true"
+                                        style="display: inline-block"
+                                        ></div>
+                                        <p class="fs-3" style="display: inline-block">Lydia</p>
+                                    </div>
+                                    <!-- 空格線 ♡♥❤ -->
+                                    <div class="introduction row">
+                                        <p class="fs-6">
+                                        溫馨提示：在電腦上觀看以獲得最佳體驗；在手機上建議橫式觀看
+                                        </p>
+                                    </div>
+                                    <div class="introduction2">
+                                        <p class="fs-6">大貓、小貓：524快到了耶!</p>
+                                    </div>
+                                    <div id="clockdiv">
+                                        <div class="blur">
+                                            <span class="days"></span>
+                                            <div class="smalltext">天</div>
+                                        </div>
+                                        <div class="blur">
+                                            <span class="hours"></span>
+                                            <div class="smalltext">小時</div>
+                                        </div>
+                                        <div class="blur">
+                                            <span class="minutes"></span>
+                                            <div class="smalltext">分</div>
+                                        </div>
+                                        <div class="blur">
+                                            <span class="seconds"></span>
+                                            <div class="smalltext">秒</div>
+                                        </div>
+                                    </div>
+                                    <div href="https://google.com" class="close" id="entrance">
+                                        點擊進入
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+      integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+      integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://kit.fontawesome.com/5476a5a801.js"
+      crossorigin="anonymous"
+    ></script>
+    <script type="text/javascript">
+      function getTimeRemaining(endtime) {
+        const total = Date.parse(endtime) - Date.parse(new Date());
+        const seconds = Math.floor((total / 1000) % 60);
+        const minutes = Math.floor((total / 1000 / 60) % 60);
+        const hours = Math.floor((total / (1000 * 60 * 60)) % 24);
+        const days = Math.floor(total / (1000 * 60 * 60 * 24));
+
+        return {
+          total,
+          days,
+          hours,
+          minutes,
+          seconds,
+        };
+      }
+
+      function initializeClock(id, endtime) {
+        const clock = document.getElementById(id);
+        const daysSpan = clock.querySelector(".days");
+        const hoursSpan = clock.querySelector(".hours");
+        const minutesSpan = clock.querySelector(".minutes");
+        const secondsSpan = clock.querySelector(".seconds");
+        
+        const timeinterval = setInterval(updateClock, 1000);
+        
+        function updateClock() {
+          const t = getTimeRemaining(endtime);
+
+          daysSpan.innerHTML = t.days;
+          hoursSpan.innerHTML = ("0" + t.hours).slice(-2);
+          minutesSpan.innerHTML = ("0" + t.minutes).slice(-2);
+          secondsSpan.innerHTML = ("0" + t.seconds).slice(-2);
+
+          if (t.total <= 0) {
+            clearInterval(timeinterval);
+            console.log("Success");
+            enter("clockdiv", "entrance");
+          }
+        }
+        
+      }
+      let day2 = new Date("05/24/2022");
+      /*const deadline = new Date(
+        Date.parse(new Date()) + day2.getTime() - Date.now()
+      );*/
+      const deadline = new Date(
+        Date.parse(new Date()) + 5000
+      );
+      initializeClock("clockdiv", deadline);
+      function enter(clock_id, entrance_id){ /*if time */
+        /*hide clock*/
+        let clock = document.getElementById(clock_id);
+        clock.style.display = "none";
+        
+        /*display entrance*/
+        let entrance = document.getElementById(entrance_id);
+        entrance.className = "";
+        
+        /*if click entrance*/
+        entrance.onclick = function(){
+            console.log("Click!");
+            let background = document.querySelector(".background");
+            background.classList.add("slide-out");
+        }
+
+
+        let animated_background = document.querySelector(".background");
+        animated_background.addEventListener('animationend', function(){
+            console.log("Turn to home page !");
+            location.href = "celebration.html";
+        });
+      }
+    </script>
+  </body>
+</html>
